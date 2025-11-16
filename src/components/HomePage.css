@@ -1,0 +1,141 @@
+/* Container */
+.home-container {
+  font-family: 'Raleway', sans-serif;
+  color: #000; /* main text black */
+  /* background: linear-gradient(135deg, #ffffff, #C4EEF2);  */
+  background: #ffffff;
+  padding: 0;
+  margin: 0;
+  width: 100vw;
+  overflow-x: hidden;
+}
+
+/* Hero Section */
+.hero-section {
+  text-align: center;
+  /* padding: 100px; */
+  padding: 100px 100px 40px;
+  width: 100%;
+}
+
+.hero-title {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  line-height: 1.2;
+  color: #025159;
+}
+
+.hero-title .highlight {
+  color: #3F858C; 
+  font-weight: 700;
+}
+
+.hero-subtitle {
+  font-size: 1.3rem;
+  margin-bottom: 30px;
+  color: #025159; 
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  font-weight: 400;
+}
+
+/* Demo Button */
+.demo-btn {
+  padding: 14px 40px;
+  font-size: 1.1rem;
+  background-color: #025159; 
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  color: #fff; 
+  font-weight: 600;
+  transition: none;
+}
+
+/* Users Section */
+/* .users-section {
+  text-align: center;
+  margin: 50px 0;
+  padding: 0 20px;
+}
+
+.users-section h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #025159; 
+  font-weight: 700;
+}
+
+.users-list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 20px;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.user-card {
+  background-color: #C4EEF2; 
+  padding: 15px 25px;
+  border-radius: 8px;
+  font-weight: 500;
+  min-width: 200px;
+  color: #025159; 
+  transition: none;
+} */
+
+/* Features Section */
+.features-section {
+  text-align: center;
+  /* margin: 30px 0; */
+  /* padding: 0 20px; */
+}
+
+.features-section h2 {
+  font-size: 2rem;
+  margin-bottom: 30px;
+  color: #025159; 
+  font-weight: 700;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.feature-card {
+  background-color: #025159; 
+  padding: 20px;
+  border-radius: 8px;
+  font-weight: 500;
+  color: #ffffff; /* white text on blue card */
+  min-height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  transition: none;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2.2rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+
+  .users-list, .features-grid {
+    gap: 15px;
+  }
+}
