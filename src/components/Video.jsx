@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 import loginVideo from "../assets/Login.mp4";
 import Overview from "../assets/overview.mp4";
-import Case from "../assets/case.mp4";
+import Case from "../assets/Case.mp4";
 import Filter from "../assets/add filter.mp4";
 import Target from "../assets/target.mp4";
 import PII from "../assets/PII.mp4";
