@@ -1,3 +1,5 @@
+
+
 .footer {
   width: 100%;
   background-color: #000000; 
@@ -5,12 +7,12 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 40px;
+  padding: 8px 20px;
   font-family: 'Raleway', sans-serif;
   font-size: 0.95rem;
   border-top: 1px solid #1c1f28;
   flex-wrap: wrap;
-  margin-top: 50px;
+  /* margin-top: 50px; */
   box-sizing: border-box;
 }
 

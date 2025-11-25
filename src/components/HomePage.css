@@ -1,5 +1,7 @@
 .home-container {
   font-family: 'Raleway', sans-serif;
+  min-height: calc(100vh - 35px);
+
   color: #000;
   background: #ffffff;
   margin: 0;
@@ -11,7 +13,8 @@
 
 .hero-section {
   text-align: center;
-  padding: 100px 20px 40px;
+  /* padding: 100px 20px 40px; */
+  padding: 100px 20px 0px;  
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
@@ -55,51 +58,23 @@
   margin-bottom: 17px;
 }
 
-.features-section {
-  text-align: center;
-  padding: 20px 20px 60px;
-  width: 100%;
-}
+ @media (max-width: 768px) {
+  .hero-section {
+    padding: 60px 15px 20px;
+  }
 
-.features-section h2 {
-  font-size: 2rem;
-  margin-bottom: 30px;
-  color: #025159;
-  font-weight: 700;
-}
-
-.features-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 20px;
-  max-width: 1200px;
-  padding: 0 15px;
-  margin: 0 auto;
-}
-
-.feature-card {
-  background-color: #025159;
-  padding: 22px;
-  border-radius: 8px;
-  font-weight: 500;
-  color: #ffffff;
-  text-align: center;
-  min-height: 90px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-@media (max-width: 768px) {
   .hero-title {
-    font-size: 2.1rem;
+    font-size: 2.2rem;
   }
 
   .hero-subtitle {
     font-size: 1rem;
+    margin-bottom: 20px;
   }
 
-  .features-grid {
-    gap: 15px;
+  .demo-btn {
+    font-size: 1.2rem;
+    padding: 12px 28px;
   }
 }
+

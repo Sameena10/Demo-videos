@@ -3,14 +3,13 @@
   top: 0;
   left: 0;
   width: 100%;
-  /* height: 70px;
-  background: linear-gradient(135deg, #ffffff, #C4EEF2); */
   background: #ffffff;
   display: flex;
   align-items: center;
   padding: 0 16px;
   z-index: 1100;
   box-sizing: border-box;
+  /* margin-bottom:30px; */
 }
 
 .navbar-left {
@@ -41,7 +40,7 @@
 .navbar-title {
   font-size: 22px;
   font-weight: 600;
-  color: #ffffff; /* white title text */
+  color: #ffffff; 
   margin: 0;
   letter-spacing: 0.5px;
   text-transform: uppercase;
@@ -51,12 +50,13 @@
 /* --- Mobile Responsive --- */
 @media (max-width: 768px) {
   .navbar {
+    /* margin-bottom: 10px; */
     padding: 0 12px;
   }
 
   .navbar-logo {
-    height: 48px;
-    width: 48px;
+    height: 52px;
+    width: 52px;
     padding: 2px;
   }
 

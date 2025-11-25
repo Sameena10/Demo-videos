@@ -4,20 +4,25 @@
   box-sizing: border-box;
 }
 
-html,
-body,
-#root {
+html, body, #root {
   height: 100%;
+  margin: 0;
+  padding: 0;
   width: 100%;
-  font-family: "Inter", "Segoe UI", sans-serif;
   background-color: #f8fafc;
 }
 
-.main-content {
+/* .main-content {
 
   min-height: calc(100vh - 100px);
 
   display: flex;
   justify-content: center;
   align-items: center;
+} */
+ .main-content {
+  /* min-height: calc(100vh - 100px); */
+  flex: 1;
+  /* display: block; */
+  width: 100%;
 }
