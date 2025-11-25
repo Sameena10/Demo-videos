@@ -71,7 +71,7 @@ const VideoDashboard = () => {
     ],
     "Case Management": [
       {
-        title: "Overview of dashboard",
+        title: "Overview of Dashboard",
         description: "Detailed explanation of dashboard.",
         src: Overview,
       },
@@ -81,8 +81,8 @@ const VideoDashboard = () => {
         src: Case,
       },
       {
-        title: "Adding filter",
-        description: "How to add and customize filters for your cases.",
+        title: "Adding Filter",
+        description: "How to add and customize filters for your cases , analysis of cases.",
         src: Filter,
       },
     ],
@@ -109,22 +109,22 @@ const VideoDashboard = () => {
     ],
     "Admin Panel": [
       {
-        title: "User management",
+        title: "User Management",
         description: "User management walkthrough.",
         src: User,
       },
       {
-        title: "Roles management",
+        title: "Roles Management",
         description: "Manage user roles and permissions.",
         src: Roles,
       },
       {
-        title: "Catalogue management",
+        title: "Catalogue Management",
         description: "Managing the PII and Entity catalogue effectively.",
         src: Catalogue,
       },
       {
-        title: "Header mapping",
+        title: "Header Mapping",
         description: "Mapping headers for data extraction.",
         src: Header,
       },
