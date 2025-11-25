@@ -31,14 +31,19 @@ const HomePage = () => {
     <div className="home-container">
       <div className="hero-section">
         <h1 className="hero-title">
-          From <span className="highlight">Clues</span> to <span className="highlight">Insights</span> – Fast.
+          From <span className="highlight">Clue</span> to <span className="highlight">Closure</span> – Fast.
         </h1>
         <p className="hero-subtitle">
-          An all-in-one investigative platform that empowers professionals to uncover critical intelligence in minutes, not hours.
+          An all-in-one OSINT platform that empowers investigators to uncover critical intelligence.
+
         </p>
         <button className="demo-btn" onClick={handleDemoClick}>
           Login
         </button>
+        <p className="hero-subtitle">
+        Log in to master the system and learn to derive intelligence effectively.
+          
+        </p>
       </div>
 
       {/* <div className="users-section">

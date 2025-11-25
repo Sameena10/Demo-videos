@@ -7,39 +7,67 @@ import "react-toastify/dist/ReactToastify.css";
 const Login = ({ setToken }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+
+  // FRONTEND VALIDATION
+  const validateFields = () => {
+    if (!username.trim()) {
+      toast.error("Username is required.", { position: "top-center" });
+      return false;
+    }
+
+    if (username.trim().length < 3) {
+      toast.error("Username must be at least 3 characters.", {
+        position: "top-center",
+      });
+      return false;
+    }
+
+    if (!password.trim()) {
+      toast.error("Password is required.", { position: "top-center" });
+      return false;
+    }
+
+    if (password.trim().length < 4) {
+      toast.error("Password must be at least 4 characters.", {
+        position: "top-center",
+      });
+      return false;
+    }
+
+    return true;
+  };
 
   const handleLogin = async (e) => {
     e.preventDefault();
 
+    // STOP API CALL IF FIELDS INVALID (no delay)
+    if (!validateFields()) return;
+
+    setLoading(true);
+
     try {
       const res = await axios.post(
-       "https://backend-demo-1-eucp.onrender.com/api/login",
-        {
-          username,
-          password,
-        }
+        "https://backend-demo-1-eucp.onrender.com/api/login",
+        { username, password }
       );
 
-      // Store token
       localStorage.setItem("token", res.data.token);
       if (setToken) setToken(res.data.token);
 
       toast.success("Login successful!", {
         position: "top-center",
         autoClose: 1500,
-        className: "toast-success",
-        closeButton: false, 
       });
 
       navigate("/dashboard");
     } catch (error) {
-      toast.error(error.response?.data?.message || "Login failed.", {
+      toast.error(error.response?.data?.message || "Invalid username or password.", {
         position: "top-center",
-        autoClose: 2000,
-        className: "toast-error",
-        closeButton: false, // remove X button
       });
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -85,8 +113,9 @@ const Login = ({ setToken }) => {
               onChange={(e) => setPassword(e.target.value)}
               style={styles.input}
             />
-            <button type="submit" style={styles.button}>
-              Login
+
+            <button type="submit" style={styles.button} disabled={loading}>
+              {loading ? "Please wait..." : "Login"}
             </button>
           </form>
         </div>
