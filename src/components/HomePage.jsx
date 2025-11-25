@@ -45,30 +45,8 @@ const HomePage = () => {
           
         </p>
       </div>
-
-      {/* <div className="users-section">
-        <h2>Who can benefit</h2>
-        <div className="users-list">
-          {users.map((user, index) => (
-            <div key={index} className="user-card">
-              {user}
-            </div>
-          ))}
-        </div>
-      </div> */}
-
-      <div className="features-section">
-        <h2>Capabilities</h2>
-        <div className="features-grid">
-          {features.map((feature, index) => (
-            <div key={index} className="feature-card">
-              {feature}
-            </div>
-          ))}
-        </div>
-      </div>
-       <Footer />
     </div>
+      //  <Footer />
   );
 };
 

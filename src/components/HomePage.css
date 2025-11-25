@@ -34,7 +34,7 @@
 }
 
 .hero-subtitle {
-  font-size: 2rem;
+  font-size: 1.6rem;
   margin-bottom: 30px;
   color: #025159;
   max-width: 900px;
@@ -44,8 +44,8 @@
 }
 
 .demo-btn {
-  padding: 20px 40px;
-  font-size: 2rem;
+  padding: 15px 35px;
+  font-size: 1.6rem;
   background-color: #025159;
   color: #fff;
   border: none;
