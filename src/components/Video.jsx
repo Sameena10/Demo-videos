@@ -1,7 +1,6 @@
 import React, { useState, useRef } from "react";
 import "./Video.css";
 import { useNavigate } from "react-router-dom";
-
 import loginVideo from "../assets/login.mp4";
 import Overview from "../assets/overview.mp4";
 import Case from "../assets/Case.mp4";
