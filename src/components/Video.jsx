@@ -1,20 +1,22 @@
 import React, { useState, useRef } from "react";
 import "./Video.css";
 import { useNavigate } from "react-router-dom";
-import loginVideo from "../assets/login.mp4";
-import Overview from "../assets/overview.mp4";
-import Case from "../assets/Case.mp4";
-import CaseAnalysis from "../assets/case analysis.mp4";
-import Filter from "../assets/add filter.mp4";
-import Target from "../assets/target.mp4";
-import PII from "../assets/PII.mp4";
-import Report from "../assets/Report.mp4";
-import User from "../assets/User.mp4";
-import Roles from "../assets/roles.mp4";
-import Catalogue from "../assets/Catalogue.mp4";
-import Header from "../assets/header mapping.mp4";
-import Createcrteria from "../assets/create criteria.mp4";
-import graphandresource from "../assets/graph and resource.mp4";
+
+// ⭐ CLOUDINARY VIDEO URLS
+const loginVideo = "https://res.cloudinary.com/dv3runtru/video/upload/v1764215687/login_qnkxlv.mp4";
+const Overview = "https://res.cloudinary.com/dv3runtru/video/upload/v1764215708/overview_d6q2b4.mp4";
+const Case = "https://res.cloudinary.com/dv3runtru/video/upload/v1764215707/Case_b9fayl.mp4";
+const CaseAnalysis = "https://res.cloudinary.com/dv3runtru/video/upload/v1764215708/case_analysis_ylqryy.mp4";
+const Filter = "https://res.cloudinary.com/dv3runtru/video/upload/v1764215695/add_filter_bj2rob.mp4";
+const Target = "https://res.cloudinary.com/dv3runtru/video/upload/v1764215712/target_empmnn.mp4";
+const PII = "https://res.cloudinary.com/dv3runtru/video/upload/v1764215696/PII_g8cfzd.mp4";
+const Report = "https://res.cloudinary.com/dv3runtru/video/upload/v1764215714/Report_hmpmps.mp4";
+const User = "https://res.cloudinary.com/dv3runtru/video/upload/v1764215717/User_xfxkos.mp4";
+const Roles = "https://res.cloudinary.com/dv3runtru/video/upload/v1764215717/User_xfxkos.mp4"; 
+const Catalogue = "https://res.cloudinary.com/dv3runtru/video/upload/v1764215708/Catalogue_bygfbk.mp4";
+const Header = "https://res.cloudinary.com/dv3runtru/video/upload/v1764215702/header_mapping_kquqoy.mp4";
+const CreateCriteria = "https://res.cloudinary.com/dv3runtru/video/upload/v1764215708/create_criteria_o1j0vp.mp4";
+const GraphAndResource = "https://res.cloudinary.com/dv3runtru/video/upload/v1764215716/graph_and_resource_rucq5u.mp4";
 
 import {
   FaFolderOpen,
@@ -30,7 +32,6 @@ import { MdLogin } from "react-icons/md";
 const VideoDashboard = () => {
   const [selectedModule, setSelectedModule] = useState("Login");
   const [isCollapsed, setIsCollapsed] = useState(true);
-
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const [durations, setDurations] = useState({});
@@ -50,7 +51,6 @@ const VideoDashboard = () => {
     setDurations({});
     setProgress({});
     setSelectedModule(module);
-
     setMobileOpen(false);
   };
 
@@ -60,7 +60,6 @@ const VideoDashboard = () => {
     navigate("/", { replace: true });
     window.location.reload();
   };
-
 
   const videoData = {
     Login: [
@@ -83,33 +82,33 @@ const VideoDashboard = () => {
       },
       {
         title: "Adding Filter",
-        description: "How to add and customize filters for your cases , analysis of cases.",
+        description: "How to add and customize filters.",
         src: Filter,
       },
       {
         title: "Case Analysis",
         description: "Analyzing case data and generating insights.",
         src: CaseAnalysis,
-      }
+      },
     ],
     "Target Management": [
       {
         title: "Target Creation",
-        description: "How to create and link targets in your investigation.",
+        description: "How to create and link targets.",
         src: Target,
       },
     ],
     "PII Management": [
       {
         title: "PII Overview",
-        description: "Understand how PII data is handled and searched.",
+        description: "Understand how PII data is handled.",
         src: PII,
       },
     ],
     "Report Analysis": [
       {
         title: "Report Insights",
-        description: "Explore report analytics and visual insights.",
+        description: "Explore report analytics and insights.",
         src: Report,
       },
     ],
@@ -126,25 +125,25 @@ const VideoDashboard = () => {
       },
       {
         title: "Catalogue Management",
-        description: "Managing the PII and Entity catalogue effectively.",
+        description: "Manage PII and Entity catalogue.",
         src: Catalogue,
       },
       {
         title: "Header Mapping",
-        description: "Mapping headers for data extraction.",
+        description: "Map headers for data extraction.",
         src: Header,
       },
     ],
     "Search Criteria": [
-       {
+      {
         title: "Search Criteria Overview",
         description: "Learn how to define and create criteria.",
-        src: Createcrteria,
+        src: CreateCriteria,
       },
-       {
+      {
         title: "Graph and Resource Overview",
-        description: "Learn how to define and use search criteria effectively.",
-        src: graphandresource,
+        description: "Use search criteria effectively.",
+        src: GraphAndResource,
       },
     ],
   };
@@ -161,33 +160,27 @@ const VideoDashboard = () => {
 
   return (
     <div className="yt-dashboard">
-      <button
-        className="yt-hamburger"
-        onClick={() => setMobileOpen(!mobileOpen)}
-      >
+      <button className="yt-hamburger" onClick={() => setMobileOpen(!mobileOpen)}>
         ☰
       </button>
+
       <aside
-        className={`yt-sidebar ${isCollapsed ? "collapsed" : ""} ${mobileOpen ? "open" : ""
-          }`}
+        className={`yt-sidebar ${isCollapsed ? "collapsed" : ""} ${mobileOpen ? "open" : ""}`}
       >
         <ul className="yt-sidebar-list">
-          {modules.map((module) => (
+          {modules.map((m) => (
             <li
-              key={module.name}
-              className={`yt-sidebar-item ${selectedModule === module.name ? "active" : ""
-                }`}
-              onClick={() => handleModuleChange(module.name)}
-              title={module.name}
+              key={m.name}
+              className={`yt-sidebar-item ${selectedModule === m.name ? "active" : ""}`}
+              onClick={() => handleModuleChange(m.name)}
+              title={m.name}
             >
-              <span className="yt-icon">{module.icon}</span>
+              <span className="yt-icon">{m.icon}</span>
 
               {!isCollapsed ? (
-                <span className="yt-label">{module.name}</span>
+                <span className="yt-label">{m.name}</span>
               ) : (
-                <span className="yt-mini-label">
-                  {module.name.split(" ")[0]}
-                </span>
+                <span className="yt-mini-label">{m.name.split(" ")[0]}</span>
               )}
             </li>
           ))}
@@ -197,7 +190,6 @@ const VideoDashboard = () => {
           <FaSignOutAlt className="yt-icon" />
           {!isCollapsed && "Logout"}
         </div>
-
       </aside>
 
       <main className={`yt-main ${isCollapsed ? "wide" : ""}`}>
@@ -206,7 +198,6 @@ const VideoDashboard = () => {
             <div className="yt-video-card" key={`${selectedModule}-${index}`}>
               <div className="yt-video-thumb">
                 <video
-                  key={`${selectedModule}-${video.title}`}
                   ref={(el) => (videoRefs.current[video.title] = el)}
                   className="yt-video-player"
                   controls
@@ -224,7 +215,6 @@ const VideoDashboard = () => {
                       [video.title]: formatDuration(current),
                     }));
                   }}
-                  // muted
                 >
                   <source src={video.src} type="video/mp4" />
                 </video>
