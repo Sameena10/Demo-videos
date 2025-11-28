@@ -2,7 +2,7 @@ import React, { useState, useRef } from "react";
 import "./Video.css";
 import { useNavigate } from "react-router-dom";
 
-//CLOUDINARY VIDEO URLS
+// CLOUDINARY VIDEO URLS
 const loginVideo = "https://res.cloudinary.com/dv3runtru/video/upload/v1764215687/login_qnkxlv.mp4";
 const Overview = "https://res.cloudinary.com/dv3runtru/video/upload/v1764215708/overview_d6q2b4.mp4";
 const Case = "https://res.cloudinary.com/dv3runtru/video/upload/v1764215707/Case_b9fayl.mp4";
@@ -12,7 +12,7 @@ const Target = "https://res.cloudinary.com/dv3runtru/video/upload/v1764215712/ta
 const PII = "https://res.cloudinary.com/dv3runtru/video/upload/v1764215696/PII_g8cfzd.mp4";
 const Report = "https://res.cloudinary.com/dv3runtru/video/upload/v1764215714/Report_hmpmps.mp4";
 const User = "https://res.cloudinary.com/dv3runtru/video/upload/v1764215717/User_xfxkos.mp4";
-const Roles = "https://res.cloudinary.com/dv3runtru/video/upload/v1764215717/User_xfxkos.mp4"; 
+const Roles = "https://res.cloudinary.com/dv3runtru/video/upload/v1764215717/User_xfxkos.mp4";
 const Catalogue = "https://res.cloudinary.com/dv3runtru/video/upload/v1764215708/Catalogue_bygfbk.mp4";
 const Header = "https://res.cloudinary.com/dv3runtru/video/upload/v1764215702/header_mapping_kquqoy.mp4";
 const CreateCriteria = "https://res.cloudinary.com/dv3runtru/video/upload/v1764215708/create_criteria_o1j0vp.mp4";
@@ -30,7 +30,7 @@ import {
 import { MdLogin } from "react-icons/md";
 
 const VideoDashboard = () => {
-  const [selectedModule, setSelectedModule] = useState("Login");
+  const [selectedModule, setSelectedModule] = useState("System Login");
   const [isCollapsed, setIsCollapsed] = useState(true);
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -61,102 +61,58 @@ const VideoDashboard = () => {
     window.location.reload();
   };
 
+  // 🌟 UPDATED MODULES
+  const modules = [
+    { name: "System Login", icon: <MdLogin /> },
+    { name: "Case Management", icon: <FaFolderOpen /> },
+    { name: "Target Management", icon: <FaBullseye /> },
+    { name: "PII Search", icon: <FaDatabase /> },
+    { name: "Reports", icon: <FaFileAlt /> },
+    { name: "Administration & Settings", icon: <FaUsersCog /> },
+    { name: "Ad-hoc Search", icon: <FaSearch /> },
+  ];
+
+  // UPDATED VIDEOS MAPPED TO NEW NAMES
   const videoData = {
-    Login: [
+    "System Login": [
       {
         title: "Login Overview",
-        description: "Learn how to log in securely and navigate the dashboard.",
+        description: "Learn how to log into the system and navigate.",
         src: loginVideo,
       },
     ],
+
     "Case Management": [
-      {
-        title: "Overview of Dashboard",
-        description: "Detailed explanation of dashboard.",
-        src: Overview,
-      },
-      {
-        title: "Case Management",
-        description: "Creating and managing cases effectively.",
-        src: Case,
-      },
-      {
-        title: "Adding Filter",
-        description: "How to add and customize filters.",
-        src: Filter,
-      },
-      {
-        title: "Case Analysis",
-        description: "Analyzing case data and generating insights.",
-        src: CaseAnalysis,
-      },
+      { title: "Overview of Dashboard", description: "Dashboard explanation", src: Overview },
+      { title: "Case Management", description: "Creating and managing cases", src: Case },
+      { title: "Adding Filter", description: "Add and customize filters", src: Filter },
+      { title: "Case Analysis", description: "Analyze case data", src: CaseAnalysis },
     ],
+
     "Target Management": [
-      {
-        title: "Target Creation",
-        description: "How to create and link targets.",
-        src: Target,
-      },
+      { title: "Target Creation", description: "Create and link targets", src: Target },
     ],
-    "PII Management": [
-      {
-        title: "PII Overview",
-        description: "Understand how PII data is handled.",
-        src: PII,
-      },
+
+    "PII Search": [
+      { title: "PII Overview", description: "How PII is handled", src: PII },
     ],
-    "Report Analysis": [
-      {
-        title: "Report Insights",
-        description: "Explore report analytics and insights.",
-        src: Report,
-      },
+
+    "Reports": [
+      { title: "Report Insights", description: "Explore report insights", src: Report },
     ],
-    "Admin Panel": [
-      {
-        title: "User Management",
-        description: "User management walkthrough.",
-        src: User,
-      },
-      {
-        title: "Roles Management",
-        description: "Manage user roles and permissions.",
-        src: Roles,
-      },
-      {
-        title: "Catalogue Management",
-        description: "Manage PII and Entity catalogue.",
-        src: Catalogue,
-      },
-      {
-        title: "Header Mapping",
-        description: "Map headers for data extraction.",
-        src: Header,
-      },
+
+    "Administration & Settings": [
+      { title: "User Management", description: "User management walkthrough", src: User },
+      { title: "Roles Management", description: "Managing user roles", src: Roles },
+      { title: "Catalogue Management", description: "Manage PII/Entity catalogue", src: Catalogue },
+      { title: "Header Mapping", description: "Mapping headers for data extraction", src: Header },
     ],
-    "Search Criteria": [
-      {
-        title: "Search Criteria Overview",
-        description: "Learn how to define and create criteria.",
-        src: CreateCriteria,
-      },
-      {
-        title: "Graph and Resource Overview",
-        description: "Use search criteria effectively.",
-        src: GraphAndResource,
-      },
+
+    "Ad-hoc Search": [
+      { title: "Search Criteria Overview", description: "Define and create criteria", src: CreateCriteria },
+      { title: "Graph and Resource Overview", description: "Use search criteria effectively", src: GraphAndResource },
     ],
   };
-
-  const modules = [
-    { name: "Login", icon: <MdLogin /> },
-    { name: "Case Management", icon: <FaFolderOpen /> },
-    { name: "Target Management", icon: <FaBullseye /> },
-    { name: "PII Management", icon: <FaDatabase /> },
-    { name: "Report Analysis", icon: <FaFileAlt /> },
-    { name: "Admin Management", icon: <FaUsersCog /> },
-    { name: "Search Criteria", icon: <FaSearch /> },
-  ];
 
   return (
     <div className="yt-dashboard">
@@ -164,9 +120,7 @@ const VideoDashboard = () => {
         ☰
       </button>
 
-      <aside
-        className={`yt-sidebar ${isCollapsed ? "collapsed" : ""} ${mobileOpen ? "open" : ""}`}
-      >
+      <aside className={`yt-sidebar ${isCollapsed ? "collapsed" : ""} ${mobileOpen ? "open" : ""}`}>
         <ul className="yt-sidebar-list">
           {modules.map((m) => (
             <li
@@ -177,12 +131,12 @@ const VideoDashboard = () => {
             >
               <span className="yt-icon">{m.icon}</span>
 
-              {!isCollapsed ? (
+              {/* {!isCollapsed ? (
                 <span className="yt-label">{m.name}</span>
               ) : (
                 <span className="yt-mini-label">{m.name.split(" ")[0]}</span>
-              )}
-              {/* <span className="yt-label">{m.name}</span> */}
+              )} */}
+              <span className="yt-label">{m.name}</span>
 
             </li>
           ))}
