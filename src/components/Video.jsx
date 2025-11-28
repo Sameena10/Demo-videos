@@ -177,12 +177,12 @@ const VideoDashboard = () => {
             >
               <span className="yt-icon">{m.icon}</span>
 
-              {/* {!isCollapsed ? (
+              {!isCollapsed ? (
                 <span className="yt-label">{m.name}</span>
               ) : (
                 <span className="yt-mini-label">{m.name.split(" ")[0]}</span>
-              )} */}
-              <span className="yt-label">{m.name}</span>
+              )}
+              {/* <span className="yt-label">{m.name}</span> */}
 
             </li>
           ))}
