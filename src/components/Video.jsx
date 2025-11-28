@@ -154,8 +154,8 @@ const VideoDashboard = () => {
     { name: "Target Management", icon: <FaBullseye /> },
     { name: "PII Management", icon: <FaDatabase /> },
     { name: "Report Analysis", icon: <FaFileAlt /> },
-    { name: "Admin", icon: <FaUsersCog /> },
-    { name: "Search", icon: <FaSearch /> },
+    { name: "Admin Management", icon: <FaUsersCog /> },
+    { name: "Search Criteria", icon: <FaSearch /> },
   ];
 
   return (
