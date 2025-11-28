@@ -149,13 +149,13 @@ const VideoDashboard = () => {
   };
 
   const modules = [
-    { name: "System Login", icon: <MdLogin /> },
+    { name: "Login", icon: <MdLogin /> },
     { name: "Case Management", icon: <FaFolderOpen /> },
     { name: "Target Management", icon: <FaBullseye /> },
-    { name: "PII Search", icon: <FaDatabase /> },
-    { name: "Reports", icon: <FaFileAlt /> },
-    { name: "Administration & Setting", icon: <FaUsersCog /> },
-    { name: "Ad-hoc Search", icon: <FaSearch /> },
+    { name: "PII Management", icon: <FaDatabase /> },
+    { name: "Report Analysis", icon: <FaFileAlt /> },
+    { name: "Admin", icon: <FaUsersCog /> },
+    { name: "Search", icon: <FaSearch /> },
   ];
 
   return (
