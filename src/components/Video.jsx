@@ -2,7 +2,7 @@ import React, { useState, useRef } from "react";
 import "./Video.css";
 import { useNavigate } from "react-router-dom";
 
-// ⭐ CLOUDINARY VIDEO URLS
+//CLOUDINARY VIDEO URLS
 const loginVideo = "https://res.cloudinary.com/dv3runtru/video/upload/v1764215687/login_qnkxlv.mp4";
 const Overview = "https://res.cloudinary.com/dv3runtru/video/upload/v1764215708/overview_d6q2b4.mp4";
 const Case = "https://res.cloudinary.com/dv3runtru/video/upload/v1764215707/Case_b9fayl.mp4";
@@ -149,13 +149,13 @@ const VideoDashboard = () => {
   };
 
   const modules = [
-    { name: "Login", icon: <MdLogin /> },
+    { name: "System Login", icon: <MdLogin /> },
     { name: "Case Management", icon: <FaFolderOpen /> },
     { name: "Target Management", icon: <FaBullseye /> },
-    { name: "PII Management", icon: <FaDatabase /> },
-    { name: "Report Analysis", icon: <FaFileAlt /> },
-    { name: "Admin Panel", icon: <FaUsersCog /> },
-    { name: "Search Criteria", icon: <FaSearch /> },
+    { name: "PII Search", icon: <FaDatabase /> },
+    { name: "Reports", icon: <FaFileAlt /> },
+    { name: "Administration & Setting", icon: <FaUsersCog /> },
+    { name: "Ad-hoc Search", icon: <FaSearch /> },
   ];
 
   return (
@@ -177,11 +177,13 @@ const VideoDashboard = () => {
             >
               <span className="yt-icon">{m.icon}</span>
 
-              {!isCollapsed ? (
+              {/* {!isCollapsed ? (
                 <span className="yt-label">{m.name}</span>
               ) : (
                 <span className="yt-mini-label">{m.name.split(" ")[0]}</span>
-              )}
+              )} */}
+              <span className="yt-label">{m.name}</span>
+
             </li>
           ))}
         </ul>
