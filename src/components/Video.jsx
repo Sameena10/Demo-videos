@@ -96,7 +96,7 @@ const VideoDashboard = () => {
 
   // UPDATED VIDEOS MAPPED TO NEW NAMES
   const videoData = {
-    Login: [
+    "Login": [
       {
         title: "Login Overview",
         description: "Learn how to log in securely and navigate the dashboard.",
