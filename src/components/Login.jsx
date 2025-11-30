@@ -40,36 +40,61 @@ const Login = ({ setToken }) => {
   };
 
   const handleLogin = async (e) => {
-    e.preventDefault();
+  e.preventDefault();
 
-    // STOP API CALL IF FIELDS INVALID (no delay)
-    if (!validateFields()) return;
+  // STOP API CALL IF FIELDS INVALID (no delay)
+  if (!validateFields()) return;
 
-    setLoading(true);
+  setLoading(true);
 
-    try {
-      const res = await axios.post(
-        "https://backend-demo-1-eucp.onrender.com/api/login",
-        { username, password }
-      );
+  try {
+    const res = await axios.post(
+      "https://backend-demo-1-eucp.onrender.com/api/login",
+      { username, password }
+    );
 
-      localStorage.setItem("token", res.data.token);
-      if (setToken) setToken(res.data.token);
+    // 1️⃣ Store token
+    localStorage.setItem("token", res.data.token);
+    if (setToken) setToken(res.data.token);
 
-      toast.success("Login successful!", {
-        position: "top-center",
-        autoClose: 1500,
-      });
+    // Determine allowed modules for this user
+    const allowedModules = [
+      "Login",
+      "Case Management",
+      "Target Management",
+      "PII Management",
+      "Report Analysis",
+      "Admin Panel",
+      "Search Criteria",
+    ];
 
-      navigate("/dashboard");
-    } catch (error) {
-      toast.error(error.response?.data?.message || "Invalid username or password.", {
-        position: "top-center",
-      });
-    } finally {
-      setLoading(false);
+    // Add the Rwanda Training module for a specific username
+    if (username === "demo_user") {
+      allowedModules.push("Deo Training");
     }
-  };
+
+    // Save allowed modules to localStorage
+    localStorage.setItem("allowedModules", JSON.stringify(allowedModules));
+
+    // 4Show success message
+    toast.success("Login successful!", {
+      position: "top-center",
+      autoClose: 1500,
+    });
+
+    // Navigate to dashboard
+    navigate("/dashboard");
+  } catch (error) {
+    toast.error(
+      error.response?.data?.message || "Invalid username or password.",
+      {
+        position: "top-center",
+      }
+    );
+  } finally {
+    setLoading(false);
+  }
+};
 
   return (
     <>
