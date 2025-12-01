@@ -14,6 +14,8 @@
   transition: width 0.3s ease, transform 0.3s ease;
   position: relative;
   z-index: 1500;
+   display: flex;              
+  flex-direction: column;
 }
 
 .yt-sidebar.collapsed {
@@ -69,6 +71,7 @@
   font-size: 16px;
   color: red;
   border-top: 1px solid #e5e5e5;
+   margin-top: auto;
 }
 
 .yt-logout:hover {

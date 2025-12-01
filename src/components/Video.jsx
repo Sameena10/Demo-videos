@@ -32,7 +32,13 @@ const GraphAndResource = "https://res.cloudinary.com/dv3runtru/video/upload/v176
 const RwandaTraining = "https://res.cloudinary.com/dv3runtru/video/upload/v1764215716/graph_and_resource_rucq5u.mp4";
 
 const VideoDashboard = () => {
-  const [selectedModule, setSelectedModule] = useState("System Login");
+  const username2 = (localStorage.getItem("username") || "").trim().toLowerCase();
+const isDemouser = username2.includes("demo");
+
+const defaultModule = isDemouser ? "Demo Training" : "System Login";
+
+const [selectedModule, setSelectedModule] = useState(defaultModule);
+
   const [isCollapsed, setIsCollapsed] = useState(true);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [durations, setDurations] = useState({});
@@ -178,12 +184,15 @@ const VideoDashboard = () => {
     { name: "Administration & Settings", icon: <FaUsersCog /> },
      { name: "Ad-hoc Search", icon: <FaSearch /> },
       { name: "Demo Training", icon: <FaFileAlt />, restricted: true }, ];
-    // const modules = allModules.filter(m => !m.restricted || username === "demo_user");
-//     const isDemoUser = username.toLowerCase().includes("demo");
+// const username1 = (localStorage.getItem("username") || "").trim().toLowerCase();
+// const isDemoUser = username1.includes("demo");
 // const modules = allModules.filter(m => !m.restricted || isDemoUser);
 const username1 = (localStorage.getItem("username") || "").trim().toLowerCase();
 const isDemoUser = username1.includes("demo");
-const modules = allModules.filter(m => !m.restricted || isDemoUser);
+const modules = isDemoUser
+  ? allModules.filter(m => m.name === "Demo Training")
+  : allModules.filter(m => m.name !== "Demo Training");
+
 
   return (
     <div className="yt-dashboard">
