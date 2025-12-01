@@ -5,7 +5,7 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const Login = ({ setToken }) => {
-  const [username, setUsername] = useState("");
+  const [username, setUsernameState] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -16,103 +16,86 @@ const Login = ({ setToken }) => {
       toast.error("Username is required.", { position: "top-center" });
       return false;
     }
-
     if (username.trim().length < 3) {
       toast.error("Username must be at least 3 characters.", {
         position: "top-center",
       });
       return false;
     }
-
     if (!password.trim()) {
       toast.error("Password is required.", { position: "top-center" });
       return false;
     }
-
     if (password.trim().length < 4) {
       toast.error("Password must be at least 4 characters.", {
         position: "top-center",
       });
       return false;
     }
-
     return true;
   };
 
   const handleLogin = async (e) => {
-  e.preventDefault();
+    e.preventDefault();
 
-  // STOP API CALL IF FIELDS INVALID (no delay)
-  if (!validateFields()) return;
+    if (!validateFields()) return;
 
-  setLoading(true);
+    setLoading(true);
 
-  try {
-    const res = await axios.post(
-      "https://backend-demo-1-eucp.onrender.com/api/login",
-      { username, password }
-    );
+    try {
+      const res = await axios.post(
+        "https://backend-demo-1-eucp.onrender.com/api/login",
+        { username, password }
+      );
 
-    // 1️⃣ Store token
-    localStorage.setItem("token", res.data.token);
-    if (setToken) setToken(res.data.token);
+      // 1️⃣ Save token
+      localStorage.setItem("token", res.data.token);
+      if (setToken) setToken(res.data.token);
 
-    // Determine allowed modules for this user
-    const allowedModules = [
-      "Login",
-      "Case Management",
-      "Target Management",
-      "PII Management",
-      "Report Analysis",
-      "Admin Panel",
-      "Search Criteria",
-    ];
+      // 2️⃣ Save username (THIS FIXES DEMO TRAINING ISSUE)
+      localStorage.setItem("username", username);
 
-    // Add the Rwanda Training module for a specific username
-    if (username === "demo_user") {
-      allowedModules.push("Deo Training");
-    }
+      // 3️⃣ Updated module list to match your sidebar
+      const allowedModules = [
+        "System Login",
+        "Case Management",
+        "Target Management",
+        "PII Search",
+        "Reports",
+        "Administration & Settings",
+        "Ad-hoc Search",
+      ];
 
-    // Save allowed modules to localStorage
-    localStorage.setItem("allowedModules", JSON.stringify(allowedModules));
-
-    // 4Show success message
-    toast.success("Login successful!", {
-      position: "top-center",
-      autoClose: 1500,
-    });
-
-    // Navigate to dashboard
-    navigate("/dashboard");
-  } catch (error) {
-    toast.error(
-      error.response?.data?.message || "Invalid username or password.",
-      {
-        position: "top-center",
+      // 4️⃣ Give Demo Training only to demo_user
+      if (username.trim().toLowerCase().includes("demo")) {
+        allowedModules.push("Demo Training");
       }
-    );
-  } finally {
-    setLoading(false);
-  }
-};
+
+      // 5️⃣ Save allowed modules
+      localStorage.setItem("allowedModules", JSON.stringify(allowedModules));
+
+      toast.success("Login successful!", {
+        position: "top-center",
+        autoClose: 1500,
+      });
+
+      navigate("/dashboard");
+
+    } catch (error) {
+      toast.error(
+        error.response?.data?.message || "Invalid username or password.",
+        {
+          position: "top-center",
+        }
+      );
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <>
-      <ToastContainer
-        position="top-center"
-        limit={1}
-        newestOnTop={true}
-        closeOnClick
-        pauseOnHover
-        draggable
-        toastStyle={{
-          fontSize: "16px",
-          padding: "12px",
-          borderRadius: "10px",
-          width: "90%",
-          maxWidth: "380px",
-        }}
-      />
+      <ToastContainer position="top-center" limit={1} newestOnTop={true} />
 
       <div style={styles.container}>
         <div style={styles.card}>
@@ -128,9 +111,10 @@ const Login = ({ setToken }) => {
               type="text"
               placeholder="Username"
               value={username}
-              onChange={(e) => setUsername(e.target.value)}
+              onChange={(e) => setUsernameState(e.target.value)}
               style={styles.input}
             />
+
             <input
               type="password"
               placeholder="Password"
@@ -145,40 +129,6 @@ const Login = ({ setToken }) => {
           </form>
         </div>
       </div>
-
-      <style>{`
-        .Toastify__toast-body {
-          white-space: nowrap;
-          overflow: hidden;
-          text-overflow: ellipsis;
-        }
-
-        .Toastify__toast {
-          width: auto !important;
-          max-width: 380px;
-        }
-
-        .toast-success {
-          border: 2px solid #2ecc71;
-          background: #eafff3;
-          color: #1e8f57;
-          font-weight: bold;
-        }
-
-        .toast-error {
-          border: 2px solid #e74c3c;
-          background: #ffecec;
-          color: #b42318;
-          font-weight: bold;
-        }
-
-        @media (max-width: 480px) {
-          .Toastify__toast {
-            width: 90%;
-            margin: auto;
-          }
-        }
-      `}</style>
     </>
   );
 };

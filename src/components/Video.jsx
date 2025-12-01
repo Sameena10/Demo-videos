@@ -15,7 +15,6 @@ import {
 import { MdLogin } from "react-icons/md";
 
 // CLOUDINARY VIDEO URLS
-// CLOUDINARY VIDEO URLS
 const loginVideo = "https://res.cloudinary.com/dv3runtru/video/upload/v1764215687/login_qnkxlv.mp4";
 const Overview = "https://res.cloudinary.com/dv3runtru/video/upload/v1764215708/overview_d6q2b4.mp4";
 const Case = "https://res.cloudinary.com/dv3runtru/video/upload/v1764215707/Case_b9fayl.mp4";
@@ -82,21 +81,9 @@ const VideoDashboard = () => {
     navigate("/", { replace: true });
     window.location.reload();
   };
-
-  // 🌟 UPDATED MODULES
-  const modules = [
-    { name: "System Login", icon: <MdLogin /> },
-    { name: "Case Management", icon: <FaFolderOpen /> },
-    { name: "Target Management", icon: <FaBullseye /> },
-    { name: "PII Search", icon: <FaDatabase /> },
-    { name: "Reports", icon: <FaFileAlt /> },
-    { name: "Administration & Settings", icon: <FaUsersCog /> },
-    { name: "Ad-hoc Search", icon: <FaSearch /> },
-  ];
-
   // UPDATED VIDEOS MAPPED TO NEW NAMES
   const videoData = {
-    "Login": [
+    "System Login": [
       {
         title: "Login Overview",
         description: "Learn how to log in securely and navigate the dashboard.",
@@ -132,21 +119,21 @@ const VideoDashboard = () => {
         src: Target,
       },
     ],
-    "PII Management": [
+    "PII Search": [
       {
         title: "PII Overview",
         description: "Understand how PII data is handled.",
         src: PII,
       },
     ],
-    "Report Analysis": [
+    "Reports": [
       {
         title: "Report Insights",
         description: "Explore report analytics and insights.",
         src: Report,
       },
     ],
-    "Admin Panel": [
+    "Administration & Settings": [
       {
         title: "User Management",
         description: "User management walkthrough.",
@@ -168,7 +155,7 @@ const VideoDashboard = () => {
         src: Header,
       },
     ],
-    "Search Criteria": [
+    "Ad-hoc Search": [
       {
         title: "Search Criteria Overview",
         description: "Learn how to define and create criteria.",
@@ -180,17 +167,23 @@ const VideoDashboard = () => {
         src: GraphAndResource,
       },
     ],
+    "Demo Training": [{ title: "Intelligence Overview", description: "Training video.", src: RwandaTraining }],
   };
 
-  const modules = [
-    { name: "Login", icon: <MdLogin /> },
-    { name: "Case Management", icon: <FaFolderOpen /> },
-    { name: "Target Management", icon: <FaBullseye /> },
-    { name: "PII Management", icon: <FaDatabase /> },
-    { name: "Report Analysis", icon: <FaFileAlt /> },
-    { name: "Admin Panel", icon: <FaUsersCog /> },
-    { name: "Search Criteria", icon: <FaSearch /> },
-  ];
+  const allModules = [ { name: "System Login", icon: <MdLogin /> }, 
+    { name: "Case Management", icon: <FaFolderOpen /> }, 
+    { name: "Target Management", icon: <FaBullseye /> }, 
+    { name: "PII Search", icon: <FaDatabase /> }, 
+    { name: "Reports", icon: <FaFileAlt /> }, 
+    { name: "Administration & Settings", icon: <FaUsersCog /> },
+     { name: "Ad-hoc Search", icon: <FaSearch /> },
+      { name: "Demo Training", icon: <FaFileAlt />, restricted: true }, ];
+    // const modules = allModules.filter(m => !m.restricted || username === "demo_user");
+//     const isDemoUser = username.toLowerCase().includes("demo");
+// const modules = allModules.filter(m => !m.restricted || isDemoUser);
+const username1 = (localStorage.getItem("username") || "").trim().toLowerCase();
+const isDemoUser = username1.includes("demo");
+const modules = allModules.filter(m => !m.restricted || isDemoUser);
 
   return (
     <div className="yt-dashboard">
@@ -202,11 +195,12 @@ const VideoDashboard = () => {
             <li key={m.name} className={`yt-sidebar-item ${selectedModule === m.name ? "active" : ""}`} onClick={() => handleModuleChange(m.name)} title={m.name}>
               <span className="yt-icon">{m.icon}</span>
 
-              {!isCollapsed ? (
+              {/* {!isCollapsed ? (
                 <span className="yt-label">{m.name}</span>
               ) : (
                 <span className="yt-mini-label">{m.name.split(" ")[0]}</span>
-              )}
+              )} */}
+              <span className="yt-label">{m.name}</span>
             </li>
           ))}
         </ul>
