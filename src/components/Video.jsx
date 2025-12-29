@@ -125,10 +125,10 @@ const [selectedModule, setSelectedModule] = useState(defaultModule);
         src: Target,
       },
     ],
-    "PII Search": [
+    "IDINT Search": [
       {
-        title: "PII Overview",
-        description: "Understand how PII data is handled.",
+        title: "IDINT Overview",
+        description: "Understand how IDINT data is handled.",
         src: PII,
       },
     ],
