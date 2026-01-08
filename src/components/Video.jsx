@@ -11,6 +11,7 @@ import {
   FaUsersCog,
   FaSearch,
   FaSignOutAlt,
+  FaHashtag 
 } from "react-icons/fa";
 import { MdLogin } from "react-icons/md";
 
@@ -29,6 +30,7 @@ const Catalogue = "https://res.cloudinary.com/dv3runtru/video/upload/v1764215708
 const Header = "https://res.cloudinary.com/dv3runtru/video/upload/v1764215702/header_mapping_kquqoy.mp4";
 const CreateCriteria = "https://res.cloudinary.com/dv3runtru/video/upload/v1764215708/create_criteria_o1j0vp.mp4";
 const GraphAndResource = "https://res.cloudinary.com/dv3runtru/video/upload/v1764215716/graph_and_resource_rucq5u.mp4";
+const Hashtag = "https://res.cloudinary.com/dv3runtru/video/upload/v1767853421/QV_1767812762617_owfn5x.mp4";
 const RwandaTraining = "https://res.cloudinary.com/dv3runtru/video/upload/v1764215716/graph_and_resource_rucq5u.mp4";
 
 const VideoDashboard = () => {
@@ -173,6 +175,13 @@ const [selectedModule, setSelectedModule] = useState(defaultModule);
         src: GraphAndResource,
       },
     ],
+  "Originator":[
+      {
+      title: "Hashtag Search",
+      description: "Search origibator of any hashtag",
+      src: Hashtag,
+      }
+    ],
     "Demo Training": [{ title: "Intelligence Overview", description: "Training video.", src: RwandaTraining }],
   };
 
@@ -183,6 +192,8 @@ const [selectedModule, setSelectedModule] = useState(defaultModule);
     { name: "Reports", icon: <FaFileAlt /> }, 
     { name: "Administration & Settings", icon: <FaUsersCog /> },
      { name: "Ad-hoc Search", icon: <FaSearch /> },
+          { name: "Originator", icon: <FaHashtag /> },
+
       { name: "Demo Training", icon: <FaFileAlt />, restricted: true }, ];
 // const username1 = (localStorage.getItem("username") || "").trim().toLowerCase();
 // const isDemoUser = username1.includes("demo");
