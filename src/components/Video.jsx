@@ -178,7 +178,7 @@ const [selectedModule, setSelectedModule] = useState(defaultModule);
   "Originator":[
       {
       title: "Hashtag Search",
-      description: "Search origibator of any hashtag",
+      description: "Search originator of any hashtag",
       src: Hashtag,
       }
     ],
