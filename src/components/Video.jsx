@@ -89,7 +89,6 @@ const [selectedModule, setSelectedModule] = useState(defaultModule);
     navigate("/", { replace: true });
     window.location.reload();
   };
-  // UPDATED VIDEOS MAPPED TO NEW NAMES
   const videoData = {
     "System Login": [
       {
@@ -188,7 +187,7 @@ const [selectedModule, setSelectedModule] = useState(defaultModule);
   const allModules = [ { name: "System Login", icon: <MdLogin /> }, 
     { name: "Case Management", icon: <FaFolderOpen /> }, 
     { name: "Target Management", icon: <FaBullseye /> }, 
-    { name: "PII Search", icon: <FaDatabase /> }, 
+    { name: "IDINT Search", icon: <FaDatabase /> }, 
     { name: "Reports", icon: <FaFileAlt /> }, 
     { name: "Administration & Settings", icon: <FaUsersCog /> },
      { name: "Ad-hoc Search", icon: <FaSearch /> },
