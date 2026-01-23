@@ -11,7 +11,8 @@ import {
   FaUsersCog,
   FaSearch,
   FaSignOutAlt,
-  FaHashtag 
+  FaHashtag,
+  FaTrashAlt
 } from "react-icons/fa";
 import { MdLogin } from "react-icons/md";
 
@@ -31,15 +32,16 @@ const Header = "https://res.cloudinary.com/dv3runtru/video/upload/v1764215702/he
 const CreateCriteria = "https://res.cloudinary.com/dv3runtru/video/upload/v1764215708/create_criteria_o1j0vp.mp4";
 const GraphAndResource = "https://res.cloudinary.com/dv3runtru/video/upload/v1764215716/graph_and_resource_rucq5u.mp4";
 const Hashtag = "https://res.cloudinary.com/dv3runtru/video/upload/v1767853421/QV_1767812762617_owfn5x.mp4";
+const takedown = "https://res.cloudinary.com/dtol2yoco/video/upload/v1769148833/Video_r9wefd.mp4";
 const RwandaTraining = "https://res.cloudinary.com/dv3runtru/video/upload/v1764215716/graph_and_resource_rucq5u.mp4";
 
 const VideoDashboard = () => {
   const username2 = (localStorage.getItem("username") || "").trim().toLowerCase();
-const isDemouser = username2.includes("demo");
+  const isDemouser = username2.includes("demo");
 
-const defaultModule = isDemouser ? "Demo Training" : "System Login";
+  const defaultModule = isDemouser ? "Demo Training" : "System Login";
 
-const [selectedModule, setSelectedModule] = useState(defaultModule);
+  const [selectedModule, setSelectedModule] = useState(defaultModule);
 
   const [isCollapsed, setIsCollapsed] = useState(true);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -174,34 +176,42 @@ const [selectedModule, setSelectedModule] = useState(defaultModule);
         src: GraphAndResource,
       },
     ],
-  "Originator":[
+    "Originator": [
       {
-      title: "Hashtag Search",
-      description: "Search originator of any hashtag",
-      src: Hashtag,
+        title: "Hashtag Search",
+        description: "Search originator of any hashtag",
+        src: Hashtag,
+      }
+    ],
+    "Takedown": [
+      {
+        title: "Takedown Process",
+        description: "Learn the takedown procedures and protocols.",
+        src: takedown,
       }
     ],
     "Demo Training": [{ title: "Intelligence Overview", description: "Training video.", src: RwandaTraining }],
   };
 
-  const allModules = [ { name: "System Login", icon: <MdLogin /> }, 
-    { name: "Case Management", icon: <FaFolderOpen /> }, 
-    { name: "Target Management", icon: <FaBullseye /> }, 
-    { name: "IDINT Search", icon: <FaDatabase /> }, 
-    { name: "Reports", icon: <FaFileAlt /> }, 
-    { name: "Administration & Settings", icon: <FaUsersCog /> },
-     { name: "Ad-hoc Search", icon: <FaSearch /> },
-          { name: "Originator", icon: <FaHashtag /> },
+  const allModules = [{ name: "System Login", icon: <MdLogin /> },
+  { name: "Case Management", icon: <FaFolderOpen /> },
+  { name: "Target Management", icon: <FaBullseye /> },
+  { name: "IDINT Search", icon: <FaDatabase /> },
+  { name: "Originator", icon: <FaHashtag /> },
+  { name: "Reports", icon: <FaFileAlt /> },
+  { name: "Administration & Settings", icon: <FaUsersCog /> },
+  { name: "Ad-hoc Search", icon: <FaSearch /> },
+  { name: "Takedown", icon: <FaTrashAlt /> },
 
-      { name: "Demo Training", icon: <FaFileAlt />, restricted: true }, ];
-// const username1 = (localStorage.getItem("username") || "").trim().toLowerCase();
-// const isDemoUser = username1.includes("demo");
-// const modules = allModules.filter(m => !m.restricted || isDemoUser);
-const username1 = (localStorage.getItem("username") || "").trim().toLowerCase();
-const isDemoUser = username1.includes("demo");
-const modules = isDemoUser
-  ? allModules.filter(m => m.name === "Demo Training")
-  : allModules.filter(m => m.name !== "Demo Training");
+  { name: "Demo Training", icon: <FaFileAlt />, restricted: true },];
+  // const username1 = (localStorage.getItem("username") || "").trim().toLowerCase();
+  // const isDemoUser = username1.includes("demo");
+  // const modules = allModules.filter(m => !m.restricted || isDemoUser);
+  const username1 = (localStorage.getItem("username") || "").trim().toLowerCase();
+  const isDemoUser = username1.includes("demo");
+  const modules = isDemoUser
+    ? allModules.filter(m => m.name === "Demo Training")
+    : allModules.filter(m => m.name !== "Demo Training");
 
 
   return (
