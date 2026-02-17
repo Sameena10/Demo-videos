@@ -13,12 +13,18 @@ import VideoDashboard from "./components/Video";
 import "./App.css";
 
 function App() {
-  const [token, setToken] = useState(localStorage.getItem("token"));
+  
+  const [token, setToken] = useState(
+    localStorage.getItem("token")
+  );
 
   useEffect(() => {
-    const handleStorage = () => setToken(localStorage.getItem("token"));
+    const handleStorage = () =>
+      setToken(localStorage.getItem("token"));
+
     window.addEventListener("storage", handleStorage);
-    return () => window.removeEventListener("storage", handleStorage);
+    return () =>
+      window.removeEventListener("storage", handleStorage);
   }, []);
 
   return (
@@ -36,17 +42,40 @@ function App() {
           }
         />
 
+        
+        {/*
         <Route
           path="/login"
           element={<LoginPage setToken={setToken} />}
         />
+        */}
 
+        {/* Redirect login to dashboard for now */}
+        <Route
+          path="/login"
+          element={<Navigate to="/dashboard" />}
+        />
+
+      
+        <Route
+          path="/dashboard"
+          element={
+            <div className="app-container">
+              {/* <Navbar /> */}
+              <main className="main-content page-container">
+                <VideoDashboard />
+              </main>
+            </div>
+          }
+        />
+
+      
+        {/*
         <Route
           path="/dashboard"
           element={
             token ? (
               <div className="app-container">
-                {/* <Navbar /> */}
                 <main className="main-content page-container">
                   <VideoDashboard />
                 </main>
@@ -56,6 +85,7 @@ function App() {
             )
           }
         />
+        */}
       </Routes>
     </Router>
   );
